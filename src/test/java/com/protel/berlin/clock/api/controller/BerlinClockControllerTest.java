@@ -29,13 +29,13 @@ class BerlinClockControllerTest {
     @Test
     void it_should_return_current_time_berlin_clock_equivalent() throws Exception {
         //Given
-        String berlinClockOfCurrentTime = "Y\n" +
+        String berlinClock = "Y\n" +
                 "RRRR\n" +
                 "0000\n" +
                 "YY000000000\n" +
                 "0000";
 
-        when(berlinClockService.getBerlinClock(anyString())).thenReturn(berlinClockOfCurrentTime);
+        when(berlinClockService.getBerlinClock(anyString())).thenReturn(berlinClock);
 
         //When
         ResultActions resultActions = mockMvc.perform(MockMvcRequestBuilders.get("/api/berlinClock")
@@ -48,13 +48,13 @@ class BerlinClockControllerTest {
     @Test
     void it_should_return_given_time_berlin_clock_equivalent() throws Exception {
         //Given
-        String berlinClockOfCurrentTime = "Y\n" +
+        String berlinClock = "Y\n" +
                 "RRRR\n" +
                 "0000\n" +
                 "YY000000000\n" +
                 "0000";
 
-        when(berlinClockService.getBerlinClock(anyString())).thenReturn(berlinClockOfCurrentTime);
+        when(berlinClockService.getBerlinClock(anyString())).thenReturn(berlinClock);
 
         //When
         ResultActions resultActions = mockMvc.perform(MockMvcRequestBuilders.get("/api/berlinClock")
@@ -63,7 +63,7 @@ class BerlinClockControllerTest {
 
         //Then
         resultActions.andExpect(status().isOk());
-        assertEquals(berlinClockOfCurrentTime, resultActions.andReturn().getResponse().getContentAsString());
+        assertEquals(berlinClock, resultActions.andReturn().getResponse().getContentAsString());
     }
 
     @Test
